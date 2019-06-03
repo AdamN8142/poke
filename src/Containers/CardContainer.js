@@ -7,18 +7,12 @@ class CardContainer extends Component {
 
 
 displayPokemon = () => {
-  if(this.props.isLoading) {
-    return (
-      <div>
-        LOADING
-      </div>
-    )
-  } else {
+ 
     let pokemon = this.props.pokemon.map((poke)=> {
       return (<Card poke={poke}/>)
     })
     return pokemon
-  }
+  
 
   }
 

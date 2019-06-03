@@ -1,4 +1,5 @@
 import { mapDispatchToProps, mapStateToProps } from './App'
+import * as actions from '../../Actions/index'
 
 describe('mapDispatchToProps', () => {
   it('return dispatch with pokemon', ()=> {
@@ -8,5 +9,23 @@ describe('mapDispatchToProps', () => {
     const mappedProps = mapDispatchToProps(mockDispatch)
     mappedProps.addPokemon(mockPokemon)
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+  })
+  it('should dispatch an error msg if fetch failes', () => {
+    const mockMessage = 'NOOOO'
+    const mockDispatch = jest.fn()
+    const actionToDispatch = actions.setError(mockMessage)
+    const mappedProps = mapDispatchToProps(mockDispatch)
+    mappedProps.setError(mockMessage)
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+  })
+  it('should dispatch isLoading with bool', () => {
+    const mockBool= false
+    const mockDispatch = jest.fn()
+    const actionToDispatch = actions.isLoading(mockBool)
+    const mappedProps = mapDispatchToProps(mockDispatch)
+    mappedProps.isLoading(mockBool)
+    expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+
+    
   })
 })
