@@ -26,20 +26,18 @@ class App extends Component {
   }
 
   render() {
-    if(this.props.isLoading){
-      return (
-        <div>LOAAAAADING</div>
-      )
-    } else {
+    
+   
       return (
         <div className='App'>
           <h1 className='header'> POKéDEX </h1>
-          <CardContainer />
+          {this.props.error && this.props.error}
+          {this.props.loading ? <div>LOAAAAADING</div> : <CardContainer />}
         </div>
       );
     }
   }
-}
+
 
 export const mapDispatchToProps = (dispatch) => ({
   addPokemon: (pokemon) => dispatch(addPokemon(pokemon)),

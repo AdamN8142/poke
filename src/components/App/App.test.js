@@ -25,7 +25,38 @@ describe('mapDispatchToProps', () => {
     const mappedProps = mapDispatchToProps(mockDispatch)
     mappedProps.isLoading(mockBool)
     expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
-
-    
   })
 })
+
+describe('mapStateToProps', () => {
+  it('should return an isloading prop', () => {
+    const mockState = {
+      loading: true,
+      pokemon: [],
+      error: ''
+    }
+    const expected = {
+      loading: true,
+      error: '',
+
+      
+    }
+    const mappedProps = mapStateToProps(mockState)
+    expect(mappedProps).toEqual(expected)
+  })
+  it('should return an error prop', () => {
+    const mockState = {
+      error: 'hello'
+    }
+    const expected = {
+      loading: undefined,
+      error: 'hello'
+      
+    }
+    const mappedProps = mapStateToProps(mockState)
+    expect(mappedProps).toEqual(expected)
+  })
+})
+
+
+

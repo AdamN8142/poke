@@ -9,8 +9,9 @@ describe('pokemonReducer', () => {
   })
 
   it('should return pokemon', () => {
-    const expected = {type:'ADD_POKEMON', pokemon:[{reptar: 'says hi'}, {nope: 'say hi too'}]}
-    const result = actions.addPokemon([{reptar: 'says hi'}, {nope: 'say hi too'}])
+    const action = {type:'ADD_POKEMON', pokemon:[{reptar: 'says hi'}, {nope: 'say hi too'}]}
+    const expected = [{reptar: 'says hi'}, {nope: 'say hi too'}]
+    const result = pokemonReducer([], action)
     expect(result).toEqual(expected)
   })
 })
